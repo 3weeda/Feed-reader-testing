@@ -33,7 +33,9 @@ $(function() {
          */
          it('have a URL that is not empty', function(){
              for (const feed of allFeeds){
+               // Ensures URL is defined
                expect(feed.url).toBeDefined();
+               // Ensures URL is not empty
                expect(feed.url.length).not.toBe(0);
              }
          });
@@ -45,7 +47,9 @@ $(function() {
          */
          it('have a name that is defined and not empty', function(){
              for (const feed of allFeeds){
+               // Ensures name is defined
                expect(feed.name).toBeDefined();
+               // Ensures name is not empty
                expect(feed.name.length).not.toBe(0);
              }
          });
@@ -60,6 +64,7 @@ $(function() {
        * hiding/showing of the menu element.
        */
        it('is hidden by default', function(){
+         // Ensures the body has the hiding function as a default
          expect($('body').hasClass('menu-hidden')).toBe(true);
        });
 
@@ -70,8 +75,12 @@ $(function() {
         */
         it('toggles visibility when clicked', function(){
           menuIcon = $('.menu-icon-link');
+          // Excute handlers attatched to menuIcon for the clicking event,
+          // One click shows the hidden menu
           menuIcon.trigger('click');
           expect($('body').hasClass('menu-hidden')).toBe(false);
+          // Excute handlers attatched to menuIcon for the clicking event
+          // Two clicks show it again
           menuIcon.trigger('click');
           expect($('body').hasClass('menu-hidden')).toBe(true);
         });
@@ -90,6 +99,7 @@ $(function() {
          loadFeed(0, done);
        });
        it('are loaded', function(){
+         // Ensures entry is loaded
          expect($('.entry').length).toBeGreaterThan(0);
        })
     });
@@ -111,6 +121,7 @@ $(function() {
          });
        })
        it('causes content to change', function(){
+         //compare change between previous and current feeds
          expect($('feed').html()).not.toBe(firstFeed);
        })
     });
